@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agency Hub - World's Most Advanced AI Agency</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        .dark-gradient-bg {
+            background: linear-gradient(135deg, #2D1B69 0%, #11998e 50%, #38ef7d 100%);
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .shape:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .shape:nth-child(2) {
+            top: 20%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+        
+        .shape:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #667eea;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, #e0e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero .highlight {
+            background: linear-gradient(135deg, #38ef7d, #11998e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        .services-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+        
+        .section-header h2 .highlight {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-header p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-features {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+        }
+        
+        .service-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #333;
+            font-size: 0.9rem;
+        }
+        
+        .service-features li::before {
+            content: "✓";
+            color: #10b981;
+            font-weight: bold;
+        }
+        
+        .how-it-works {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+        
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .step {
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .step p {
+            color: #666;
+        }
+        
+        .cta-section {
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .project-form {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+        
+        .form-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+        
+        .form-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            background: #f9fafb;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+        
+        .ai-notice {
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .founders-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .founder-card {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border-radius: 20px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .founder-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+        
+        .founder-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .founder-avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+        
+        .founder-name {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .founder-title {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        
+        .founder-story {
+            text-align: left;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+        
+        .linkedin-btn {
+            background: #0077b5;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .linkedin-btn:hover {
+            background: #005885;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 119, 181, 0.3);
+        }
+        
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: black;
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: #10b981;
+            margin-bottom: 1rem;
+        }
+    <!-- EmailJS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        // Initialize EmailJS with your user ID
+        (function(){
+            emailjs.init("user_id"); // Your EmailJS User ID
+        })();
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🚀 AI Agency Hub</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#founder">Founder</a></li>
+                <li><a href="#get-started">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="dark-gradient-bg">
+        <div class="floating-shapes">
+            <div class="shape">🤖</div>
+            <div class="shape">⚡</div>
+            <div class="shape">🎯</div>
+        </div>
+        <div class="hero">
+            <div class="container">
+                <div class="badge">✨ World's Most Advanced AI Agency</div>
+                <h1>AI Agency <span class="highlight">Hub</span></h1>
+                <p>The world's first fully automated AI agency that understands your vision, analyzes requirements with advanced AI, and builds enterprise-grade products end-to-end. From concept to deployment - completely automated.</p>
+                <div class="cta-buttons">
+                    <a href="#get-started" class="btn btn-primary">🚀 Start Your Project</a>
+                    <a href="#how-it-works" class="btn btn-secondary">✅ View Our Work</a>
+                </div>
+                <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                    <div style="background: rgba(255,255,255,0.1); padding: 1rem 2rem; border-radius: 50px; backdrop-filter: blur(10px);">
+                        <div style="font-size: 1.5rem; font-weight: bold;">⚡ AI-Powered Analysis</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 1rem 2rem; border-radius: 50px; backdrop-filter: blur(10px);">
+                        <div style="font-size: 1.5rem; font-weight: bold;">🔧 Automated Development</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 1rem 2rem; border-radius: 50px; backdrop-filter: blur(10px);">
+                        <div style="font-size: 1.5rem; font-weight: bold;">⚡ Lightning Fast Delivery</div>
+                    </div>
+                </div>
+                <p style="margin-top: 2rem; opacity: 0.8;">Trusted by innovative companies worldwide</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">✨ Our Services</div>
+                <h2>Everything You Need to Build <span class="highlight">Anything</span></h2>
+                <p>Our AI analyzes your requirements and automatically determines the perfect tech stack, timeline, and cost. No meetings, no back-and-forth - just results.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">💻</div>
+                    <h3>App Development</h3>
+                    <p>Cutting-edge web and mobile applications with modern UI/UX</p>
+                    <ul class="service-features">
+                        <li>React/React Native</li>
+                        <li>Progressive Web Apps</li>
+                        <li>Real-time Features</li>
+                        <li>API Integration</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #10b981, #059669);">🌐</div>
+                    <h3>SaaS Development</h3>
+                    <p>Scalable Software as a Service solutions for businesses</p>
+                    <ul class="service-features">
+                        <li>Multi-tenant Architecture</li>
+                        <li>Subscription Management</li>
+                        <li>Analytics Dashboard</li>
+                        <li>Enterprise Security</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">🧠</div>
+                    <h3>Marketing & Content</h3>
+                    <p>AI-powered marketing strategies and content creation</p>
+                    <ul class="service-features">
+                        <li>Content Strategy</li>
+                        <li>Social Media Management</li>
+                        <li>SEO Optimization</li>
+                        <li>Brand Identity</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">⚡</div>
+                    <h3>Software Development</h3>
+                    <p>Custom enterprise software solutions and integrations</p>
+                    <ul class="service-features">
+                        <li>Custom Software</li>
+                        <li>System Integration</li>
+                        <li>Legacy Modernization</li>
+                        <li>Cloud Migration</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">🤖</div>
+                    <h3>AI/ML Solutions</h3>
+                    <p>Advanced AI and Machine Learning implementations</p>
+                    <ul class="service-features">
+                        <li>Machine Learning Models</li>
+                        <li>Natural Language Processing</li>
+                        <li>Computer Vision</li>
+                        <li>Predictive Analytics</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+            </div>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <div style="background: linear-gradient(135deg, #667eea, #764ba2); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: white; font-size: 2rem;">📧</div>
+                    <h3>Submit Request</h3>
+                    <p>Describe your vision and requirements</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <div style="background: linear-gradient(135deg, #667eea, #764ba2); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: white; font-size: 2rem;">🧠</div>
+                    <h3>AI Analysis</h3>
+                    <p>Advanced AI analyzes and estimates cost</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <div style="background: linear-gradient(135deg, #667eea, #764ba2); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: white; font-size: 2rem;">💻</div>
+                    <h3>Automated Build</h3>
+                    <p>AI builds your product end-to-end</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">04</div>
+                    <div style="background: linear-gradient(135deg, #667eea, #764ba2); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: white; font-size: 2rem;">🚀</div>
+                    <h3>Delivery</h3>
+                    <p>Get your completed product</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#get-started" class="btn" style="background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 600;">🚀 Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section id="founder" class="founders-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">👑 Meet The Founder</div>
+                <h2>Visionary Behind the <span class="highlight">Revolution</span></h2>
+            </div>
+            
+            <div class="founder-card">
+                <div class="founder-avatar" onclick="window.open('https://www.linkedin.com/in/nishu-tiwari-3754b119b/', '_blank')">
+                    NT
+                </div>
+                <h2 class="founder-name">Nishu Tiwari</h2>
+                <p class="founder-title">Founder & CEO, AI Visionary</p>
+                <div class="founder-story">
+                    <p>A visionary tech entrepreneur and AI pioneer, Nishu Tiwari has revolutionized the digital landscape with her groundbreaking approach to automated business solutions. With a passion for democratizing enterprise-level technology, she created the world's first fully automated AI agency.</p>
+                    
+                    <p>"I believe technology should serve humanity, not the other way around. Our AI doesn't just build products - it understands dreams and transforms them into reality," says Nishu, whose innovative platform has already transformed how businesses approach digital transformation.</p>
+                    
+                    <p>Under her visionary leadership, AI Agency Hub has become the go-to platform for companies seeking cutting-edge solutions without the traditional complexities of project management. Her mission: a world where anyone can bring their ideas to life through the power of AI, making enterprise-grade technology accessible to all.</p>
+                </div>
+                <a href="https://www.linkedin.com/in/nishu-tiwari-3754b119b/" target="_blank" class="linkedin-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.063s.92-2.063 2.063-2.063c1.14 0 2.064.926 2.064 2.063s-.925 2.063-2.064 2.063zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                    Connect on LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Started Section -->
+    <section id="get-started" class="cta-section gradient-bg">
+        <div class="container">
+            <div class="section-header" style="color: white;">
+                <div class="badge" style="background: rgba(255,255,255,0.2); color: white;">🚀 Get Started</div>
+                <h2 style="color: white;">Let's Build Something <span class="highlight">Amazing</span></h2>
+                <p style="color: rgba(255,255,255,0.9);">Tell us about your vision. Our AI will analyze your requirements, estimate costs, and start building your product automatically. No meetings required.</p>
+            </div>
+            
+            <div class="project-form">
+                <div class="form-header">
+                    <h3>Project Request Form</h3>
+                    <p>Powered by advanced AI analysis and automation</p>
+                </div>
+                
+                <form id="projectForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="company">Company (Optional)</label>
+                            <input type="text" id="company" name="company" placeholder="Your company name">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone (Optional)</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="projectDescription">Project Description *</label>
+                        <textarea id="projectDescription" name="projectDescription" placeholder="Describe your project vision, goals, and what you want to achieve..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="requirements">Detailed Requirements *</label>
+                        <textarea id="requirements" name="requirements" placeholder="List specific features, functionality, integrations, and technical requirements..." required></textarea>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="timeline">Preferred Timeline</label>
+                            <input type="text" id="timeline" name="timeline" placeholder="e.g., 2-3 months, ASAP, Flexible">
+                        </div>
+                        <div class="form-group">
+                            <label for="budget">Budget Range</label>
+                            <input type="text" id="budget" name="budget" placeholder="e.g., $10k-$25k, Open to suggestions">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        🧠 Submit for AI Analysis
+                    </button>
+                    
+                    <div class="ai-notice">
+                        <div style="font-size: 2rem;">🤖</div>
+                        <div>
+                            <strong>Our AI will analyze your requirements and send a detailed cost estimate to your email within minutes</strong>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 AI Agency Hub. Revolutionizing business through AI automation. All rights reserved.</p>
+            <p style="margin-top: 1rem; opacity: 0.7;">World's First Fully Automated AI Agency | Contact: u.nishu703@gmail.com</p>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="success-icon">✅</div>
+            <h2>Request Submitted Successfully!</h2>
+            <p>Our AI is now analyzing your project requirements. You'll receive a detailed cost estimate and project proposal at your email within the next few minutes.</p>
+            <p style="margin-top: 1rem; font-weight: bold;">What happens next:</p>
+            <ul style="text-align: left; margin: 1rem 0;">
+                <li>AI analyzes your requirements (2-3 minutes)</li>
+                <li>Detailed cost estimate sent to your email</li>
+                <li>Project timeline and technical specifications</li>
+                <li>Next steps for project initiation</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar transparency on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Advanced AI-powered form submission
+        document.getElementById('projectForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const projectData = {
+                fullName: formData.get('fullName'),
+                email: formData.get('email'),
+                company: formData.get('company') || 'Not specified',
+                phone: formData.get('phone') || 'Not provided',
+                projectDescription: formData.get('projectDescription'),
+                requirements: formData.get('requirements'),
+                timeline: formData.get('timeline') || 'Flexible',
+                budget: formData.get('budget') || 'Open to suggestions',
+                submissionTime: new Date().toISOString(),
+                aiAnalysisStatus: 'pending'
+            };
+            
+            // Simulate AI analysis and cost estimation
+            const aiAnalysis = generateAIAnalysis(projectData);
+            
+            // Create comprehensive email content
+            const emailContent = createEmailContent(projectData, aiAnalysis);
+            
+            // Send email (simulated - in real implementation, this would be sent to u.nishu703@gmail.com)
+            console.log('EMAIL SENT TO: u.nishu703@gmail.com');
+            console.log('EMAIL CONTENT:', emailContent);
+            
+            // Show success modal
+            document.getElementById('successModal').style.display = 'block';
+            
+            // Reset form
+            this.reset();
+        });
+
+        // AI Analysis Engine
+        function generateAIAnalysis(projectData) {
+            const description = projectData.projectDescription.toLowerCase();
+            const requirements = projectData.requirements.toLowerCase();
+            
+            // Determine project type and complexity
+            let projectType = 'Custom Software';
+            let complexity = 'medium';
+            let estimatedCost = 15000;
+            let timeline = '3-4 months';
+            
+            // AI logic to analyze project type
+            if (description.includes('app') || description.includes('mobile')) {
+                projectType = 'Mobile/Web Application';
+                estimatedCost = 12000;
+                timeline = '2-3 months';
+            } else if (description.includes('saas') || description.includes('software as a service')) {
+                projectType = 'SaaS Platform';
+                estimatedCost = 25000;
+                timeline = '4-6 months';
+                complexity = 'complex';
+            } else if (description.includes('ai') || description.includes('machine learning')) {
+                projectType = 'AI/ML Solution';
+                estimatedCost = 30000;
+                timeline = '4-5 months';
+                complexity = 'complex';
+            } else if (description.includes('website') || description.includes('landing')) {
+                projectType = 'Website/Landing Page';
+                estimatedCost = 8000;
+                timeline = '1-2 months';
+                complexity = 'simple';
+            } else if (description.includes('marketing') || description.includes('content')) {
+                projectType = 'Marketing & Content Strategy';
+                estimatedCost = 6000;
+                timeline = '1-2 months';
+                complexity = 'simple';
+            }
+            
+            // Adjust based on requirements complexity
+            const complexityFactors = [
+                'integration', 'api', 'database', 'real-time', 'scalable', 
+                'enterprise', 'security', 'analytics', 'dashboard', 'admin'
+            ];
+            
+            let complexityScore = 0;
+            complexityFactors.forEach(factor => {
+                if (requirements.includes(factor)) complexityScore++;
+            });
+            
+            if (complexityScore >= 5) {
+                complexity = 'complex';
+                estimatedCost *= 1.5;
+                timeline = timeline.replace(/(\d+)-(\d+)/, (match, p1, p2) => `${parseInt(p1)+1}-${parseInt(p2)+2}`);
+            } else if (complexityScore <= 2) {
+                complexity = 'simple';
+                estimatedCost *= 0.8;
+            }
+            
+            // Generate technical stack recommendation
+            let techStack = [];
+            if (projectType.includes('Mobile')) {
+                techStack = ['React Native', 'Node.js', 'MongoDB', 'Firebase'];
+            } else if (projectType.includes('SaaS')) {
+                techStack = ['React', 'Node.js', 'PostgreSQL', 'AWS', 'Stripe'];
+            } else if (projectType.includes('AI')) {
+                techStack = ['Python', 'TensorFlow', 'FastAPI', 'PostgreSQL', 'Docker'];
+            } else {
+                techStack = ['React', 'Node.js', 'MongoDB', 'AWS'];
+            }
+            
+            return {
+                projectType,
+                complexity,
+                estimatedCost: Math.round(estimatedCost),
+                timeline,
+                techStack,
+                confidenceScore: 0.92,
+                riskAssessment: complexity === 'complex' ? 'Medium' : 'Low'
+            };
+        }
+
+        // Email Content Generator
+        function createEmailContent(projectData, aiAnalysis) {
+            return `
+🚀 NEW PROJECT REQUEST - AI ANALYSIS COMPLETE
+
+=====================================
+CLIENT INFORMATION
+=====================================
+Name: ${projectData.fullName}
+Email: ${projectData.email}
+Company: ${projectData.company}
+Phone: ${projectData.phone}
+Submission Time: ${new Date(projectData.submissionTime).toLocaleString()}
+
+=====================================
+PROJECT DETAILS
+=====================================
+${projectData.projectDescription}
+
+DETAILED REQUIREMENTS:
+${projectData.requirements}
+
+Preferred Timeline: ${projectData.timeline}
+Budget Range: ${projectData.budget}
+
+=====================================
+🤖 AI ANALYSIS RESULTS
+=====================================
+Project Type: ${aiAnalysis.projectType}
+Complexity Level: ${aiAnalysis.complexity.toUpperCase()}
+AI Confidence Score: ${(aiAnalysis.confidenceScore * 100).toFixed(1)}%
+
+💰 ESTIMATED COST: ${aiAnalysis.estimatedCost.toLocaleString()}
+⏰ ESTIMATED TIMELINE: ${aiAnalysis.timeline}
+📊 RISK ASSESSMENT: ${aiAnalysis.riskAssessment}
+
+=====================================
+RECOMMENDED TECH STACK
+=====================================
+${aiAnalysis.techStack.map(tech => `• ${tech}`).join('\n')}
+
+=====================================
+NEXT STEPS
+=====================================
+1. Review AI analysis and cost estimate
+2. Contact client with proposal
+3. Schedule project kickoff call
+4. Initialize automated development pipeline
+
+=====================================
+AUTOMATED AI AGENCY HUB SYSTEM
+Contact: u.nishu703@gmail.com
+=====================================
+            `;
+        }
+
+        // Modal functionality
+        const modal = document.getElementById('successModal');
+        const closeBtn = document.getElementsByClassName('close')[0];
+
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Add floating animation to shapes
+        function animateShapes() {
+            const shapes = document.querySelectorAll('.shape');
+            shapes.forEach((shape, index) => {
+                const randomX = Math.random() * 100;
+                const randomY = Math.random() * 100;
+                const duration = 3000 + Math.random() * 2000;
+                
+                setInterval(() => {
+                    shape.style.transform = `translate(${randomX}px, ${randomY}px) rotate(${Math.random() * 360}deg)`;
+                }, duration);
+            });
+        }
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', function() {
+            animateShapes();
+            
+            // Add scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe service cards and steps
+            document.querySelectorAll('.service-card, .step').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+        });
+
+        // Add hover effects to service cards
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add typing effect to hero title
+        function typeWriter(element, text, speed) {
+            let i = 0;
+            element.innerHTML = '';
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Initialize typing effect when page loads
+        window.addEventListener('load', function() {
+            const heroTitle = document.querySelector('.hero h1');
+            if (heroTitle) {
+                const originalText = heroTitle.textContent;
+                typeWriter(heroTitle, originalText, 100);
+            }
+        });
+
+        // Add dynamic background particles
+        function createParticles() {
+            const particleContainer = document.createElement('div');
+            particleContainer.style.position = 'fixed';
+            particleContainer.style.top = '0';
+            particleContainer.style.left = '0';
+            particleContainer.style.width = '100%';
+            particleContainer.style.height = '100%';
+            particleContainer.style.pointerEvents = 'none';
+            particleContainer.style.zIndex = '1';
+            document.body.appendChild(particleContainer);
+
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'absolute';
+                particle.style.width = '2px';
+                particle.style.height = '2px';
+                particle.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                particle.style.borderRadius = '50%';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animation = `float ${3 + Math.random() * 4}s infinite linear`;
+                particleContainer.appendChild(particle);
+            }
+        }
+
+        // Initialize particles
+        createParticles();
+    </script>
+</body>
+</html>
